@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ECE4E9"
+    >
+        <TextView
+            android:id="@+id/tv_myaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我的账号"
+            android:gravity="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/tv_redgrenn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="红绿灯管理"
+            android:gravity="center"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/tv_zhangdan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="账单管理"
+            android:gravity="center"
+            android:textSize="15sp"
+            />
+
+
+</LinearLayout>
