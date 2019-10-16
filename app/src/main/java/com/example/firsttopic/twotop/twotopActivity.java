@@ -148,6 +148,8 @@ public class twotopActivity extends Activity {
                         Log.d("获取的json的是", resuit + "");
                         Log.d("进来了解析json", "开始解析");
                         GetAppdata datalistjava = gson.fromJson(resuit, GetAppdata.class);
+                        Log.d("得到的list是",datalistjava+"");
+
                         datalistjava.setId(i);
                         list.add(datalistjava);
                         Log.d("得到的list是",list.get(i-1).getGreenTime()+"");
@@ -244,32 +246,9 @@ public class twotopActivity extends Activity {
                     }
                 });
                 break;
+
             case 4:
-                //黄灯升序
-                Collections.sort(list, new Comparator<GetAppdata>() {
-                    @Override
-                    public int compare(GetAppdata o1, GetAppdata o2) {
-                       if (o1.getYellowTime()>o1.getYellowTime())
-                           return 1;
-                       else
-                           return -1;
-                    }
-                });
-                break;
-            case 5:
-                //红灯降序
-                Collections.sort(list, new Comparator<GetAppdata>() {
-                    @Override
-                    public int compare(GetAppdata o1, GetAppdata o2) {
-                        if (o1.getYellowTime()<o1.getYellowTime())
-                            return 1;
-                        else
-                            return -1;
-                    }
-                });
-                break;
-            case 6:
-                //黄灯升序
+                //绿灯升序
                 Collections.sort(list, new Comparator<GetAppdata>() {
                     @Override
                     public int compare(GetAppdata o1, GetAppdata o2) {
@@ -279,14 +258,38 @@ public class twotopActivity extends Activity {
                     }
                 });
                 break;
-            case 7:
-                //黄灯降序
+            case 5:
+                //绿灯降序
                 Collections.sort(list, new Comparator<GetAppdata>() {
                     @Override
                     public int compare(GetAppdata o1, GetAppdata o2) {
                         if (o1.getGreenTime()<o2.getGreenTime())
                             return 1;
                         else return -1;
+                    }
+                });
+                break;
+            case 6:
+                //黄灯升序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getYellowTime()>o1.getYellowTime())
+                            return 1;
+                        else
+                            return -1;
+                    }
+                });
+                break;
+            case 7:
+                //黄灯降序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getYellowTime()<o1.getYellowTime())
+                            return 1;
+                        else
+                            return -1;
                     }
                 });
                 break;

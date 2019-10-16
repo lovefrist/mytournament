@@ -3,7 +3,10 @@ package com.example.firsttopic.firsttop;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -19,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.firsttopic.GetSetfile.MyDatabaseHelper;
 import com.example.firsttopic.R;
 import com.example.firsttopic.therrtop.TherrtopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
@@ -32,7 +36,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,13 +61,16 @@ public class firsttopActivity extends Activity {
     private int keyid = 1;
     private Handler handler = new Handler();
     private EditText medittext;
-
+    private MyDatabaseHelper dbHelper;
     private int numberrech;
+    private int serial;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firsttop);
+        dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,6);
+        getdataserial();
         tv_sql = findViewById(R.id.tv_yuen);
         imageView = findViewById(R.id.iv_imgget);
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +125,7 @@ public class firsttopActivity extends Activity {
         btnquery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                serial++;
                 Log.d("充值的金额为", medittext.getText().toString());
 
                 numberrech = Integer.parseInt(medittext.getText().toString());
@@ -123,6 +133,9 @@ public class firsttopActivity extends Activity {
                 if (numberrech < 100 && numberrech > 0) {
                     RechargeBalance();
                     getjson();
+                    adddatas(numberrech);
+
+
                     Toastutil.showmes(firsttopActivity.this,"充值成功");
                 } else {
                     Toastutil.showmes(firsttopActivity.this, "啥几把乱充");
@@ -139,6 +152,27 @@ public class firsttopActivity extends Activity {
         sqinnerList.add("2");
         sqinnerList.add("3");
         return sqinnerList;
+    }
+    private void  adddatas(int number){
+        SQLiteDatabase adddata = dbHelper.getWritableDatabase();
+        Date date = new Date();
+        System.out.println(date);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String dateNowStr = sdf.format(date);
+        ContentValues values  = new ContentValues();
+        values.put("id",serial);
+        values.put("carid",keyid);
+        values.put("manoy",number);
+        values.put("username","admin");
+        values.put("time",dateNowStr);
+        long num = adddata.insert("CAR",null,values);
+        Log.d("添加成功","成功了"+num);
+        values.clear();
+    }
+    private void getdataserial(){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.query("CAR",null,null,null,null,null,null);
+        serial = cursor.getCount();
     }
 
     public void getjson() {

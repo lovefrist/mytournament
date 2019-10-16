@@ -33,8 +33,9 @@ public class twotopAdapter extends RecyclerView.Adapter<twotopAdapter.linerViewH
         if (position == 0){
             holder.tv_intersection.setText("路口");
             holder.tv_red.setText("红灯时长（S）");
-            holder.tv_grenn.setText("黄灯时长（S）");
-            holder.tv_yellew.setText("绿灯时长（S）");
+            holder.tv_yellew.setText("黄灯时长（S）");
+            holder.tv_grenn.setText("绿灯时长（S）");
+
              ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) holder.linearLayout.getLayoutParams();
             layoutParams.setMargins(0,0,0,0);
             holder.linearLayout.setLayoutParams(layoutParams);
@@ -42,8 +43,10 @@ public class twotopAdapter extends RecyclerView.Adapter<twotopAdapter.linerViewH
         }else {
             holder.tv_intersection.setText(dataget.get(position-1).getId()+"");
             holder.tv_red.setText(dataget.get(position-1).getRedTime()+"");
-            holder.tv_grenn.setText(dataget.get(position-1).getGreenTime()+"");
             holder.tv_yellew.setText(dataget.get(position-1).getYellowTime()+"");
+            holder.tv_grenn.setText(dataget.get(position-1).getGreenTime()+"");
+
+
         }
 
     }
