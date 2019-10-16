@@ -154,7 +154,7 @@ public class twotopActivity extends Activity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,appList));
+                        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,list));
                         }
                     });
 
@@ -233,6 +233,6 @@ public class twotopActivity extends Activity {
 
 
         }
-        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,appList));
+        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,list));
     }
 }

@@ -147,13 +147,16 @@ public class twotopActivity extends Activity {
                         response.body().close();
                         Log.d("获取的json的是", resuit + "");
                         Log.d("进来了解析json", "开始解析");
-                        appList[i-1] = gson.fromJson(resuit, GetAppdata.class);
-                        appList[i-1].setId(i);
+                        GetAppdata datalistjava = gson.fromJson(resuit, GetAppdata.class);
+                        datalistjava.setId(i);
+                        list.add(datalistjava);
+                        Log.d("得到的list是",list.get(i-1).getGreenTime()+"");
+
                     }
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,appList));
+                        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,list));
                         }
                     });
 
@@ -191,7 +194,7 @@ public class twotopActivity extends Activity {
     private void setsort(int sorting){
         switch (sorting){
             case 0:
-//                Collections.sort(list);
+                //路口升序
                 Collections.sort(list, new Comparator<GetAppdata>() {
                     @Override
                     public int compare(GetAppdata o1, GetAppdata o2) {
@@ -201,37 +204,96 @@ public class twotopActivity extends Activity {
                 });
                 break;
             case 1:
-                Arrays.sort(appList, new Comparator<GetAppdata>() {
+
+//                Arrays.sort(appList, new Comparator<GetAppdata>() {
+//                    @Override
+//                    public int compare(GetAppdata o1, GetAppdata o2) {
+//                        if(o1.getId() < o2.getId()) return 1;
+//                        else return -1;
+//                    }
+//                });
+                //路口降序
+                Collections.sort(list, new Comparator<GetAppdata>() {
                     @Override
                     public int compare(GetAppdata o1, GetAppdata o2) {
-                        if(o1.getRedTime() > o2.getRedTime()) return 1;
-                        else return -1;
-                    }
-                });
-                break;
-            case 2:
-                Arrays.sort(appList, new Comparator<GetAppdata>() {
-                    @Override
-                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        Log.d("改变的list",o1.getId()+"");
                         if(o1.getId() < o2.getId()) return 1;
                         else return -1;
                     }
                 });
                 break;
-            case 3:
+            case 2:
+                //红灯升序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getRedTime()>o2.getRedTime())return 1;else return -1;
+                    }
+                });
 
+                break;
+            case 3:
+                //红灯降序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getRedTime()<o2.getRedTime())
+                            return 1;
+                        else
+                            return -1;
+                    }
+                });
                 break;
             case 4:
+                //黄灯升序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                       if (o1.getYellowTime()>o1.getYellowTime())
+                           return 1;
+                       else
+                           return -1;
+                    }
+                });
                 break;
             case 5:
-
+                //红灯降序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getYellowTime()<o1.getYellowTime())
+                            return 1;
+                        else
+                            return -1;
+                    }
+                });
+                break;
             case 6:
+                //黄灯升序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getGreenTime()>o2.getGreenTime())
+                            return 1;
+                        else return -1;
+                    }
+                });
                 break;
             case 7:
+                //黄灯降序
+                Collections.sort(list, new Comparator<GetAppdata>() {
+                    @Override
+                    public int compare(GetAppdata o1, GetAppdata o2) {
+                        if (o1.getGreenTime()<o2.getGreenTime())
+                            return 1;
+                        else return -1;
+                    }
+                });
                 break;
 
 
         }
-        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,appList));
+        Log.d("改变的list","开始改变list");
+        mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,list));
     }
 }

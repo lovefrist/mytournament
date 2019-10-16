@@ -7,6 +7,11 @@ public class GetAppdata {
 //            "RESULT": "S",
 //            "ERRMSG": "成
     private int id;
+    private int YellowTime;
+    private int GreenTime;
+    private int RedTime;
+    private String RESULT;
+    private String ERRMSG;
 
     public int getId() {
         return id;
@@ -32,11 +37,6 @@ public class GetAppdata {
         return ERRMSG;
     }
 
-    private int YellowTime;
-        private int GreenTime;
-        private int RedTime;
-        private String RESULT;
-        private String ERRMSG;
 
 
     public void setId(int id) {

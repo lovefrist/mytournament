@@ -180,7 +180,7 @@ public class firsttopActivity extends Activity {
         Log.d("进来了解析json", "开始解析");
         Gson gson = new Gson();
         app appList = gson.fromJson(resuit, app.class);
-        Log.d("得到的余额为", appList.getBalance());
+        Log.d("得到的余额为", appList.getBalance()+"");
         return appList.getBalance();
 
     }

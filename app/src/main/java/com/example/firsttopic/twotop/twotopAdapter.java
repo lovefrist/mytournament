@@ -16,8 +16,8 @@ import java.util.List;
 
 public class twotopAdapter extends RecyclerView.Adapter<twotopAdapter.linerViewHoder> {
     private Context mcontext;
-    private GetAppdata[] dataget;
-    public twotopAdapter(Context context, GetAppdata[] list){
+    private List<GetAppdata>  dataget;
+    public twotopAdapter(Context context, List<GetAppdata> list){
         mcontext = context;
         dataget = list;
     }
@@ -40,10 +40,10 @@ public class twotopAdapter extends RecyclerView.Adapter<twotopAdapter.linerViewH
             holder.linearLayout.setLayoutParams(layoutParams);
 
         }else {
-            holder.tv_intersection.setText(dataget[position-1].getId()+"");
-            holder.tv_red.setText(dataget[position-1].getRedTime()+"");
-            holder.tv_grenn.setText(dataget[position-1].getGreenTime()+"");
-            holder.tv_yellew.setText(dataget[position-1].getYellowTime()+"");
+            holder.tv_intersection.setText(dataget.get(position-1).getId()+"");
+            holder.tv_red.setText(dataget.get(position-1).getRedTime()+"");
+            holder.tv_grenn.setText(dataget.get(position-1).getGreenTime()+"");
+            holder.tv_yellew.setText(dataget.get(position-1).getYellowTime()+"");
         }
 
     }
@@ -52,7 +52,7 @@ public class twotopAdapter extends RecyclerView.Adapter<twotopAdapter.linerViewH
 
     @Override
     public int getItemCount() {
-        return dataget.length+1;
+        return dataget.size()+1;
     }
     class linerViewHoder extends  RecyclerView.ViewHolder{
             private TextView  tv_intersection,tv_red,tv_grenn,tv_yellew;

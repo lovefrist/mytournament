@@ -8,17 +8,23 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.firsttopic.R;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TherrtopActivity extends Activity {
     private ImageView imageView;
     private PopupWindow mpop;
+    private Spinner msptherr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +50,17 @@ public class TherrtopActivity extends Activity {
             }
         });
 
+        msptherr = findViewById(R.id.sp_therrsp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(TherrtopActivity.this,R.layout.textfiast,getdatastring());
+        adapter.setDropDownViewResource(R.layout.breakcles);
+        msptherr.setAdapter(adapter);
 
-
-
+    }
+    private List<String> getdatastring(){
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add("时间升序");
+        arrayList.add("时间降序");
+        return arrayList;
     }
 
 
