@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -23,6 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.firsttopic.GetSetfile.MyDatabaseHelper;
+import com.example.firsttopic.Menu;
+import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
 import com.example.firsttopic.therrtop.TherrtopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
@@ -49,7 +52,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class firsttopActivity extends Activity {
+public class firsttopActivity extends MyAppCompatActivity {
     private ImageView imageView;
     private PopupWindow mpop;
     private Spinner spinner;
@@ -69,29 +72,13 @@ public class firsttopActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firsttop);
+        Menu menu= super.setMenu(this,"ETC",null);
+       View view = menu.getLinear_left();
+        view.setBackgroundColor(Color.rgb(255, 255, 255));
         dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,6);
         getdataserial();
         tv_sql = findViewById(R.id.tv_yuen);
-        imageView = findViewById(R.id.iv_imgget);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View popText = getLayoutInflater().inflate(R.layout.layout_navyes, null);
 
-                TextView myaccount = popText.findViewById(R.id.tv_myaccount);
-                TextView redgrenn = popText.findViewById(R.id.tv_redgrenn);
-                TextView zhangdan = popText.findViewById(R.id.tv_zhangdan);
-                OnClick onClick =  new OnClick();
-                zhangdan.setOnClickListener(onClick);
-                myaccount.setOnClickListener(onClick);
-                redgrenn.setOnClickListener(onClick);
-
-                mpop = new PopupWindow(popText, 500, ViewGroup.LayoutParams.WRAP_CONTENT);
-                mpop.setOutsideTouchable(true);
-                mpop.setFocusable(true);
-                mpop.showAsDropDown(imageView);
-            }
-        });
         spinner = findViewById(R.id.sq_number);
         ArrayAdapter<String> spinneradapter = new ArrayAdapter<>(firsttopActivity.this, R.layout.textfiast, getDataSource());
         spinneradapter.setDropDownViewResource(R.layout.breakcles);

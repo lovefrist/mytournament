@@ -18,6 +18,7 @@ import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.therrtop.TherrtopActivity;
@@ -38,8 +39,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class twotopActivity extends Activity {
-    private ImageView imageView;
+public class twotopActivity extends MyAppCompatActivity {
+
     private  int item_id = 1;
     private PopupWindow mpop;
     private Spinner mspsort;
@@ -54,26 +55,7 @@ public class twotopActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_twotop);
-        imageView = findViewById(R.id.iv_imgget);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View popText = getLayoutInflater().inflate(R.layout.layout_navyes, null);
-
-                TextView myaccount = popText.findViewById(R.id.tv_myaccount);
-                TextView redgrenn = popText.findViewById(R.id.tv_redgrenn);
-                TextView zhangdan = popText.findViewById(R.id.tv_zhangdan);
-                OnClick onClick =  new OnClick();
-                zhangdan.setOnClickListener(onClick);
-                myaccount.setOnClickListener(onClick);
-                redgrenn.setOnClickListener(onClick);
-
-                mpop = new PopupWindow(popText, 500, ViewGroup.LayoutParams.WRAP_CONTENT);
-                mpop.setOutsideTouchable(true);
-                mpop.setFocusable(true);
-                mpop.showAsDropDown(imageView);
-            }
-        });
+        super.setMenu(this,"红路灯",null);
 
         mspsort = findViewById(R.id.sp_twosort);
         getDatajson();

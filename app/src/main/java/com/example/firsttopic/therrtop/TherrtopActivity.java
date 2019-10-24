@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firsttopic.GetSetfile.MyDatabaseHelper;
+import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
@@ -33,7 +34,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-public class TherrtopActivity extends Activity {
+public class TherrtopActivity extends MyAppCompatActivity {
     private ImageView imageView;
     private PopupWindow mpop;
     private Spinner msptherr;
@@ -47,30 +48,11 @@ public class TherrtopActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therrtop);
-
+        super.setMenu(this,"账单管理",null);
         lists = new ArrayList<>();
         dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,6);
         getdatadaptet();
-        imageView = findViewById(R.id.iv_imgget);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                View popText = getLayoutInflater().inflate(R.layout.layout_navyes, null);
 
-                TextView myaccount = popText.findViewById(R.id.tv_myaccount);
-                TextView redgrenn = popText.findViewById(R.id.tv_redgrenn);
-                TextView zhangdan = popText.findViewById(R.id.tv_zhangdan);
-                  OnClick onClick =  new OnClick();
-                zhangdan.setOnClickListener(onClick);
-                myaccount.setOnClickListener(onClick);
-                redgrenn.setOnClickListener(onClick);
-
-                mpop = new PopupWindow(popText, 500, ViewGroup.LayoutParams.WRAP_CONTENT);
-                mpop.setOutsideTouchable(true);
-                mpop.setFocusable(true);
-                mpop.showAsDropDown(imageView);
-            }
-        });
 
         msptherr = findViewById(R.id.sp_therrsp);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(TherrtopActivity.this,R.layout.textfiast,getdatastring());

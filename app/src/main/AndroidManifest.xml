@@ -11,12 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         android:usesCleartextTraffic="true">
-        <activity android:name=".therrtop.TherrtopActivity"></activity>
+        <activity android:name=".fiveTesting.IndexActivity"  android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".Fourtopic.Mp4oneActivity"
+            android:screenOrientation="landscape"  />
+        <activity
+            android:name=".Fourtopic.ViolationrecordActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Fourtopic.JpgreadActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".therrtop.TherrtopActivity" />
         <activity android:name=".twotop.twotopActivity" />
         <activity android:name=".firsttop.firsttopActivity" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
