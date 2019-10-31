@@ -11,9 +11,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.fiveTesting.IndexActivity;
+import com.example.firsttopic.ninthtop.NinthtopActivity;
+import com.example.firsttopic.seventhtop.SeventhTopActivity;
+import com.example.firsttopic.sixgettop.ChatActivity;
 import com.example.firsttopic.therrtop.TherrtopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
@@ -25,6 +29,7 @@ import java.util.List;
 //import com.ziker.train.RedGreenActivity;
 
 public class MyAppCompatActivity extends AppCompatActivity {
+    public String TAG = "MyAppCompatActivity";
     private List<Integer> idList = new ArrayList<>();
     private List<Class<?>> ActivityList = new ArrayList<>();
     private static int i = 0;
@@ -47,12 +52,20 @@ public class MyAppCompatActivity extends AppCompatActivity {
         idList.add(R.id.T_Manageractivity);
         idList.add(R.id.T_Violationactivity);
         idList.add(R.id.T_Texting);
+        idList.add(R.id.T_longing);
+        idList.add(R.id.T_fazhi);
+        idList.add(R.id.T_gobaidey);
+        idList.add(R.id.T_account);
         ActivityList.add(MainActivity.class);
         ActivityList.add(firsttopActivity.class);
         ActivityList.add(twotopActivity.class);
         ActivityList.add(TherrtopActivity.class);
         ActivityList.add(ViolationrecordActivity.class);
         ActivityList.add(IndexActivity.class);
+        ActivityList.add(ChatActivity.class);
+        ActivityList.add(SeventhTopActivity.class);
+        ActivityList.add(EighthTopActivity.class);
+        ActivityList.add(NinthtopActivity.class);
 //        ActivityList.add(RedGreenActivity.class);
 //        ActivityList.add(ManagerActivity.class);
     }

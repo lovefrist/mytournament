@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_color"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginBottom="3dp"
+    android:background="@drawable/boxborderwai"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_indextext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="温度"
+        android:textSize="30dp"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/yuan"
+        android:gravity="center"
+        android:text="15"
+        android:textSize="20dp" />
+</RelativeLayout>

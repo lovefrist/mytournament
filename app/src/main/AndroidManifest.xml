@@ -12,10 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".fiveTesting.IndexActivity"  android:screenOrientation="landscape"></activity>
+        <activity android:name=".ninthtop.NinthtopActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".EighthTops.EighthTopActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".seventhtop.SeventhTopActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".sixgettop.ChatActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".fiveTesting.IndexActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Fourtopic.Mp4oneActivity"
-            android:screenOrientation="landscape"  />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Fourtopic.ViolationrecordActivity"
             android:screenOrientation="landscape" />

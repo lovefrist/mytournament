@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -39,6 +40,7 @@ public class Menu extends LinearLayout {//
     private int bx = 0;
     private int offsetX;
     private boolean aBoolean = true;
+    public boolean needmove = false;
 
     public Menu(Context context) {
         super(context);
@@ -75,7 +77,7 @@ public class Menu extends LinearLayout {//
     private void setResources(Context context, String Title, Integer MenuIcon, Integer Top_more_id, Integer Left_menu_id) {
         //找到子控件
         if (Left_menu_id != null) {
-            LinearLayout left_item = (LinearLayout) LayoutInflater.from(context).inflate(Left_menu_id, null);
+            ScrollView left_item = (ScrollView) LayoutInflater.from(context).inflate(Left_menu_id, null);
             linear_left.addView(left_item);
             //找到所有子控件及ID
             viewList = getAllChildViews(left_item);
@@ -94,7 +96,9 @@ public class Menu extends LinearLayout {//
         });
         if (Top_more_id != null) {//more布局不为空加载
             menu_more = LayoutInflater.from(context).inflate(Top_more_id, null);
-            menu_more_root.addView(menu_more_root);
+            ViewGroup.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            menu_more.setLayoutParams(params);
+            menu_more_root.addView(menu_more);
         }
         if (MenuIcon != null) {//图标不为空加载
             menu_src.setImageResource(MenuIcon);
@@ -236,7 +240,7 @@ public class Menu extends LinearLayout {//
                 int nextX = (int) ev.getX();
                 int nextY = (int) ev.getY();
                 if (nextX - onInterceptStartX > 30 && Math.abs(nextY - onInterceptStartY) <= 20) {//从左向右拉超过30并且y差距小于20
-                    return true;
+                    return !needmove;
                 } else if (linear.getTranslationX() == 0 && nextX > linear_left.getWidth() && nextY > menu_src.getWidth()) {//侧滑菜单出现并且是一个单击行为
                     return true;
                 }

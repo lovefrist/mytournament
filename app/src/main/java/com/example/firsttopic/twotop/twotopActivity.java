@@ -253,14 +253,11 @@ public class twotopActivity extends MyAppCompatActivity {
                 break;
             case 6:
                 //黄灯升序
-                Collections.sort(list, new Comparator<GetAppdata>() {
-                    @Override
-                    public int compare(GetAppdata o1, GetAppdata o2) {
-                        if (o1.getYellowTime()>o1.getYellowTime())
-                            return 1;
-                        else
-                            return -1;
-                    }
+                Collections.sort(list, (o1, o2) -> {
+                    if (o1.getYellowTime()>o1.getYellowTime())
+                        return 1;
+                    else
+                        return -1;
                 });
                 break;
             case 7:
@@ -278,7 +275,7 @@ public class twotopActivity extends MyAppCompatActivity {
 
 
         }
-        Log.d("改变的list","开始改变list");
+        Log.d("改变的list","开始改变list"+list.get(0).getYellowTime());
         mrecyclerView.setAdapter(new twotopAdapter(twotopActivity.this,list));
     }
 }

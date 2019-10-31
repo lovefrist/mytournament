@@ -49,7 +49,50 @@
         android:layout_height="wrap_content"
 
         />
+    <Button
+        android:id="@+id/btn_Testing"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="环境检测"
+        android:layout_height="wrap_content"
+
+        />
+    <Button
+        android:id="@+id/btn_Chart"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="实时检测"
+        android:layout_height="wrap_content"
+
+        />
 
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/btn_sevefazhi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="阀值设置"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_gobai"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="出行管理"
+            android:layout_weight="1"
+            />
+        <Button
+            android:id="@+id/btn_Account"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="账号管理"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
 </LinearLayout>

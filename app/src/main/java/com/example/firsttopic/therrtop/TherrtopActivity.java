@@ -50,7 +50,7 @@ public class TherrtopActivity extends MyAppCompatActivity {
         setContentView(R.layout.activity_therrtop);
         super.setMenu(this,"账单管理",null);
         lists = new ArrayList<>();
-        dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,6);
+        dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,7);
         getdatadaptet();
 
 

@@ -1,8 +1,5 @@
 package com.example.firsttopic.firsttop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,9 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,11 +30,6 @@ import com.example.firsttopic.twotop.twotopActivity;
 import com.example.firsttopic.util.Toastutil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -67,30 +60,31 @@ public class firsttopActivity extends MyAppCompatActivity {
     private MyDatabaseHelper dbHelper;
     private int numberrech;
     private int serial;
+    /* 整数位数*/
+    private static final int INTEGER_COUNT = 3;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firsttop);
-        Menu menu= super.setMenu(this,"ETC",null);
-       View view = menu.getLinear_left();
+        Menu menu = super.setMenu(this, "ETC", null);
+        View view = menu.getLinear_left();
         view.setBackgroundColor(Color.rgb(255, 255, 255));
-        dbHelper = new MyDatabaseHelper(this,"CARRecharge",null,6);
+        dbHelper = new MyDatabaseHelper(this, "CARRecharge", null, 7);
         getdataserial();
         tv_sql = findViewById(R.id.tv_yuen);
 
         spinner = findViewById(R.id.sq_number);
         ArrayAdapter<String> spinneradapter = new ArrayAdapter<>(firsttopActivity.this, R.layout.textfiast, getDataSource());
         spinneradapter.setDropDownViewResource(R.layout.breakcles);
-//        ArrayAdapter<String> spinneradapter = new ArrayAdapter<String>(this,R.layout.spinnertext,getDataSource());
-//        spinneradapter.setDropDownViewResource(R..layoutconnert);
         spinner.setAdapter(spinneradapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String[] languages = getResources().getStringArray(R.array.chehao);
                 keyid = position + 1;
-                if (position == 0){
+                if (position == 0) {
                     getjson();
                 }
             }
@@ -101,32 +95,52 @@ public class firsttopActivity extends MyAppCompatActivity {
             }
         });
         buttonquery = findViewById(R.id.btn_query);
-        buttonquery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getjson();
-            }
-        });
+        buttonquery.setOnClickListener(v -> getjson());
         btnquery = findViewById(R.id.btn_Log);
         medittext = findViewById(R.id.et_Recharge);
-        btnquery.setOnClickListener(new View.OnClickListener() {
+        medittext.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (start == 0 && s.toString().equals(".") && count == 1) {
+                    //输入的第一个字符为"."
+                    medittext.setText("");
+                } else if (s.length() >= INTEGER_COUNT + 1 && count != 0) {
+                    //当整数位数输入到达被要求的上限,并且当前在输入字符,而不是减少字符
+                    medittext.setText(s.subSequence(0, s.toString().length() - 1));
+                    medittext.setSelection(s.toString().length() - 1);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String string = s.toString();
+                int len = string.length();
+                if (len >= 1 && string.startsWith("0")) {
+                    s.clear();
+                }
+            }
+        });
+        btnquery.setOnClickListener(v -> {
+            if (!medittext.getText().toString().equals("")) {
                 serial++;
                 Log.d("充值的金额为", medittext.getText().toString());
-
                 numberrech = Integer.parseInt(medittext.getText().toString());
-                Log.d("表单传入的", "" + numberrech);
-                if (numberrech < 100 && numberrech > 0) {
+                Log.d("表单传入的", "" + medittext.getText().toString());
+
+                if (numberrech < 1000 && numberrech > 0) {
                     RechargeBalance();
                     getjson();
                     adddatas(numberrech);
-
-
-                    Toastutil.showmes(firsttopActivity.this,"充值成功");
+                    Toastutil.showmes(firsttopActivity.this, "充值成功");
                 } else {
-                    Toastutil.showmes(firsttopActivity.this, "啥几把乱充");
+                    Toastutil.showmes(firsttopActivity.this, "瞎几把乱充");
                 }
+            } else {
+                Toast.makeText(firsttopActivity.this, "充值金额不能为零", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -140,25 +154,27 @@ public class firsttopActivity extends MyAppCompatActivity {
         sqinnerList.add("3");
         return sqinnerList;
     }
-    private void  adddatas(int number){
+
+    private void adddatas(int number) {
         SQLiteDatabase adddata = dbHelper.getWritableDatabase();
         Date date = new Date();
         System.out.println(date);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String dateNowStr = sdf.format(date);
-        ContentValues values  = new ContentValues();
-        values.put("id",serial);
-        values.put("carid",keyid);
-        values.put("manoy",number);
-        values.put("username","admin");
-        values.put("time",dateNowStr);
-        long num = adddata.insert("CAR",null,values);
-        Log.d("添加成功","成功了"+num);
+        ContentValues values = new ContentValues();
+        values.put("id", serial);
+        values.put("carid", keyid);
+        values.put("manoy", number);
+        values.put("username", "admin");
+        values.put("time", dateNowStr);
+        long num = adddata.insert("CAR", null, values);
+        Log.d("添加成功", "成功了" + num);
         values.clear();
     }
-    private void getdataserial(){
+
+    private void getdataserial() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("CAR",null,null,null,null,null,null);
+        Cursor cursor = db.query("CAR", null, null, null, null, null, null);
         serial = cursor.getCount();
     }
 
@@ -201,7 +217,7 @@ public class firsttopActivity extends MyAppCompatActivity {
         Log.d("进来了解析json", "开始解析");
         Gson gson = new Gson();
         app appList = gson.fromJson(resuit, app.class);
-        Log.d("得到的余额为", appList.getBalance()+"");
+        Log.d("得到的余额为", appList.getBalance() + "");
         return appList.getBalance();
 
     }
@@ -235,15 +251,18 @@ public class firsttopActivity extends MyAppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+    }
 
-
-    class OnClick implements View.OnClickListener{
+    class OnClick implements View.OnClickListener {
         public void onClick(View v) {
             Intent intent = null;
             switch (v.getId()) {
                 case R.id.tv_myaccount:
-                    Log.d("开始页面的跳转","开始了");
+                    Log.d("开始页面的跳转", "开始了");
                     mpop.dismiss();
                     intent = new Intent(firsttopActivity.this, firsttopActivity.class);
                     break;

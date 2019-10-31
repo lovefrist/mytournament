@@ -1,20 +1,25 @@
 package com.example.firsttopic;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
+import com.example.firsttopic.fiveTesting.IndexActivity;
+import com.example.firsttopic.ninthtop.NinthtopActivity;
+import com.example.firsttopic.seventhtop.SeventhTopActivity;
+import com.example.firsttopic.sixgettop.ChatActivity;
 import com.example.firsttopic.therrtop.TherrtopActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
 public class MainActivity extends MyAppCompatActivity {
-    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn;
+    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,12 @@ public class MainActivity extends MyAppCompatActivity {
         mtwobtn = findViewById(R.id.btn_towtopic);
         mtherrbtn = findViewById(R.id.btn_therrtopic);
         mforbtn = findViewById(R.id.btnfourtopic);
+        mTasting = findViewById(R.id.btn_Testing);
+        mChart = findViewById(R.id.btn_Chart);
+        msevebtn = findViewById(R.id.btn_sevefazhi);
+        mgpbaibtn = findViewById(R.id.btn_gobai);
+        mAccountbtn = findViewById(R.id.btn_Account);
         setonck();
-
     }
 
     private void setonck() {
@@ -37,7 +46,11 @@ public class MainActivity extends MyAppCompatActivity {
         mtwobtn.setOnClickListener(onClick);
         mtherrbtn.setOnClickListener(onClick);
         mforbtn.setOnClickListener(onClick);
-
+        mTasting.setOnClickListener(onClick);
+        mChart.setOnClickListener(onClick);
+        msevebtn.setOnClickListener(onClick);
+        mgpbaibtn.setOnClickListener(onClick);
+        mAccountbtn.setOnClickListener(onClick);
     }
 
     class OnClick implements RecyclerView.OnClickListener {
@@ -57,6 +70,21 @@ public class MainActivity extends MyAppCompatActivity {
                     break;
                 case R.id.btnfourtopic:
                     intent = new Intent(MainActivity.this, ViolationrecordActivity.class);
+                    break;
+                case R.id.btn_Testing:
+                    intent = new Intent(MainActivity.this, IndexActivity.class);
+                    break;
+                case R.id.btn_Chart:
+                    intent = new Intent(MainActivity.this, ChatActivity.class);
+                    break;
+                case R.id.btn_sevefazhi:
+                    intent = new Intent(MainActivity.this, SeventhTopActivity.class);
+                    break;
+                case R.id.btn_gobai:
+                    intent = new Intent(MainActivity.this, EighthTopActivity.class);
+                    break;
+                case R.id.btn_Account:
+                    intent = new Intent(MainActivity.this, NinthtopActivity.class);
                     break;
             }
             startActivity(intent);
