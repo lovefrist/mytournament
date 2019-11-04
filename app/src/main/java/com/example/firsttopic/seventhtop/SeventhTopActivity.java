@@ -43,7 +43,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class SeventhTopActivity extends MyAppCompatActivity {
+public class SeventhTopActivity extends MyAppCompatActivity{
     private Switch aSwitch;
     private TextView switchText;
     private List<EditText> edtextlist;
@@ -130,8 +130,10 @@ public class SeventhTopActivity extends MyAppCompatActivity {
         mbutton = findViewById(R.id.btn_Preservation);
         mbutton.setOnClickListener(v -> {
             Log.d(TAG, "onClick: 开始存入数据");
-            save();
+//            save();
         });
+
+        mbutton.hasOnClickListeners();
         setsave();
         aSwitch.setChecked(true);
     }

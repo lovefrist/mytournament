@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
@@ -19,6 +18,7 @@ import com.example.firsttopic.ninthtop.NinthtopActivity;
 import com.example.firsttopic.seventhtop.SeventhTopActivity;
 import com.example.firsttopic.sixgettop.ChatActivity;
 import com.example.firsttopic.therrtop.TherrtopActivity;
+import com.example.firsttopic.transportquery.TransportQueryActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
 import java.util.ArrayList;
@@ -56,6 +56,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
         idList.add(R.id.T_fazhi);
         idList.add(R.id.T_gobaidey);
         idList.add(R.id.T_account);
+        idList.add(R.id.T_Trip);
         ActivityList.add(MainActivity.class);
         ActivityList.add(firsttopActivity.class);
         ActivityList.add(twotopActivity.class);
@@ -66,6 +67,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
         ActivityList.add(SeventhTopActivity.class);
         ActivityList.add(EighthTopActivity.class);
         ActivityList.add(NinthtopActivity.class);
+        ActivityList.add(TransportQueryActivity.class);
 //        ActivityList.add(RedGreenActivity.class);
 //        ActivityList.add(ManagerActivity.class);
     }

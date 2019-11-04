@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ninthtop.NinthtopActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".transportquery.TransportQueryActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".ninthtop.NinthtopActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".EighthTops.EighthTopActivity"
             android:screenOrientation="landscape" />
