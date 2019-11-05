@@ -10,16 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
+import com.example.firsttopic.LightingManagement.LightManagActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.fiveTesting.IndexActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
 import com.example.firsttopic.seventhtop.SeventhTopActivity;
 import com.example.firsttopic.sixgettop.ChatActivity;
 import com.example.firsttopic.therrtop.TherrtopActivity;
+import com.example.firsttopic.transportquery.TransportQueryActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
 public class MainActivity extends MyAppCompatActivity {
-    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn;
+    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn,mtan,mlemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class MainActivity extends MyAppCompatActivity {
         msevebtn = findViewById(R.id.btn_sevefazhi);
         mgpbaibtn = findViewById(R.id.btn_gobai);
         mAccountbtn = findViewById(R.id.btn_Account);
+        mtan = findViewById(R.id.btn_Tran);
+        mlemp = findViewById(R.id.btn_lemp);
+
         setonck();
     }
 
@@ -51,6 +56,8 @@ public class MainActivity extends MyAppCompatActivity {
         msevebtn.setOnClickListener(onClick);
         mgpbaibtn.setOnClickListener(onClick);
         mAccountbtn.setOnClickListener(onClick);
+        mtan.setOnClickListener(onClick);
+        mlemp.setOnClickListener(onClick);
     }
 
     class OnClick implements RecyclerView.OnClickListener {
@@ -85,6 +92,12 @@ public class MainActivity extends MyAppCompatActivity {
                     break;
                 case R.id.btn_Account:
                     intent = new Intent(MainActivity.this, NinthtopActivity.class);
+                    break;
+                case R.id.btn_Tran:
+                    intent = new Intent(MainActivity.this, TransportQueryActivity.class);
+                    break;
+                case R.id.btn_lemp:
+                    intent = new Intent(MainActivity.this, LightManagActivity.class);
                     break;
             }
             startActivity(intent);

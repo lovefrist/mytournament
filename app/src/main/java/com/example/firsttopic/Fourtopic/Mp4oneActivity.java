@@ -1,18 +1,17 @@
 package com.example.firsttopic.Fourtopic;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firsttopic.R;
 
@@ -36,6 +35,7 @@ private TextView textView;
         videoView = findViewById(R.id.vv_idcar);
         videoView.setVideoURI(Uri.parse("android.resource://com.example.firsttopic/" +url));
         videoView.setMediaController(new MediaController(this));
+
         imageView = findViewById(R.id.iv_backlft);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override

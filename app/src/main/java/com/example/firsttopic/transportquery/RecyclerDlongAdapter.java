@@ -47,7 +47,16 @@ public class RecyclerDlongAdapter extends RecyclerView.Adapter<RecyclerDlongAdap
             holder.tvbusnum.setText("总计");
             holder.tpople.setText(numberpop+"");
         }
-        else {
+        else if (position+1>5&&position+1<12){
+            holder.tvserial.setVisibility(View.GONE);
+            holder.tvbusnum.setVisibility(View.GONE);
+            holder.tpople.setVisibility(View.GONE);
+        }else if (position+1 == 12) {
+            holder.tvserial.setText("---");
+            holder.tvbusnum.setText("---");
+            holder.tpople.setText("---");
+
+        }else {
             holder.tvserial.setText(list.get(position-1).get("serial")+"");
             holder.tvbusnum.setText(list.get(position-1).get("busnum")+"");
             holder.tpople.setText(list.get(position-1).get("pople")+"");

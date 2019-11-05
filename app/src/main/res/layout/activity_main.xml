@@ -1,98 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_firsttopic"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="LET充值"
-        android:layout_height="wrap_content"
-
-        />
-    <Button
-        android:id="@+id/btn_towtopic"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="红路灯管理"
-        android:layout_height="wrap_content"
-
-        />
-    <Button
-        android:id="@+id/btn_therrtopic"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="充值记录"
-        android:layout_height="wrap_content"
-
-        />
-
-</LinearLayout>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    >
-    <Button
-        android:id="@+id/btnfourtopic"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="违章查询"
-        android:layout_height="wrap_content"
-
-        />
-    <Button
-        android:id="@+id/btn_Testing"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="环境检测"
-        android:layout_height="wrap_content"
-
-        />
-    <Button
-        android:id="@+id/btn_Chart"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:text="实时检测"
-        android:layout_height="wrap_content"
-
-        />
-
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_firsttopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LET充值"
+
+            />
+
+        <Button
+            android:id="@+id/btn_towtopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="红路灯管理"
+
+            />
+
+        <Button
+            android:id="@+id/btn_therrtopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="充值记录"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnfourtopic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="违章查询"
+
+            />
+
+        <Button
+            android:id="@+id/btn_Testing"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="环境检测"
+
+            />
+
+        <Button
+            android:id="@+id/btn_Chart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="实时检测"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btn_sevefazhi"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="阀值设置"
             android:layout_weight="1"
-            />
+            android:text="阀值设置" />
+
         <Button
             android:id="@+id/btn_gobai"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="出行管理"
             android:layout_weight="1"
-            />
+            android:text="出行管理" />
+
         <Button
             android:id="@+id/btn_Account"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="账号管理"
             android:layout_weight="1"
-            />
+            android:text="账号管理" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_Tran"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="出行管理"
+            />
+
+        <Button
+            android:id="@+id/btn_lemp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="红绿灯管理"
+            />
+
+    </LinearLayout>
 </LinearLayout>

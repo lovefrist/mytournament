@@ -12,8 +12,6 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.firsttopic.R;
-
 
 public class MyView extends View {
     private String TAG = "TAG";
@@ -104,6 +102,7 @@ public class MyView extends View {
         } else {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+
                     Log.e(TAG, "onTouchEvent: "+translationX );
                     startX = (int) event.getX();
                     Log.d(TAG, "onTouchEvent: cenX" + "\t" + startX);
@@ -112,6 +111,7 @@ public class MyView extends View {
                     bool = true;
                     break;
                 case MotionEvent.ACTION_MOVE:
+                    Log.d(TAG, "onTouchEvent: MOVE");
                     endX = (int) event.getX();
                     endY = (int) event.getY();
                     if (bool) {

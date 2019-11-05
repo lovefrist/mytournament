@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
+import com.example.firsttopic.LightingManagement.LightManagActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.fiveTesting.IndexActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
@@ -57,6 +58,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
         idList.add(R.id.T_gobaidey);
         idList.add(R.id.T_account);
         idList.add(R.id.T_Trip);
+        idList.add(R.id.T_lempManag);
         ActivityList.add(MainActivity.class);
         ActivityList.add(firsttopActivity.class);
         ActivityList.add(twotopActivity.class);
@@ -68,6 +70,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
         ActivityList.add(EighthTopActivity.class);
         ActivityList.add(NinthtopActivity.class);
         ActivityList.add(TransportQueryActivity.class);
+        ActivityList.add(LightManagActivity.class);
 //        ActivityList.add(RedGreenActivity.class);
 //        ActivityList.add(ManagerActivity.class);
     }

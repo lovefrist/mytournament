@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/imag_wangye"
+    android:orientation="vertical"
+    android:theme="@style/Theme.AppCompat.NoActionBar"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:padding="15dp"
+        android:layout_marginTop="150dp"
+        >
+
+        <EditText
+            android:id="@+id/btn_Accoun"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/texte_wu"
+            android:textSize="15dp"
+
+            android:singleLine="true"
+            android:hint="亲输入你的账号"
+            android:gravity="center"
+            android:textColor="#fff"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
+
+        <EditText
+            android:id="@+id/paswrod"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/texte_wu"
+            android:textSize="15dp"
+            android:hint="亲输入你的密码"
+            android:gravity="center"
+            android:inputType="textPassword"
+            android:textColor="#fff"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <CheckBox
+                android:id="@+id/Retain_cgeckbox"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+                android:text="显示密码" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"/>
+            <CheckBox
+                android:id="@+id/Preservation_Eitle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+
+                android:text="保存密码" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
+        >
+        <Button
+            android:id="@+id/btn_Long"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="25dp"
+            android:text="立即登陆"
+            android:background="@drawable/btn_wu"
+            android:textColor="#fcf"
+            />
+        <Button
+
+            android:id="@+id/btn_Register"
+            android:layout_width="150dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="65dp"
+            android:background="@drawable/btn_wu"
+            android:text="立即注册"
+            android:textColor="#fcf"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>

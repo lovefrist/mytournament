@@ -167,7 +167,7 @@ public class TransportQueryActivity extends MyAppCompatActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.layout_transpot_adapter, null);
         RecyclerView recyclerView = view.findViewById(R.id.rv_passengernum);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerDlongAdapter recyclerDlongAdapter = new RecyclerDlongAdapter(this,addlist());
+        RecyclerDlongAdapter recyclerDlongAdapter = new RecyclerDlongAdapter(this, addlist());
         recyclerView.setAdapter(recyclerDlongAdapter);
         Button button = view.findViewById(R.id.btn_disappear);
 
@@ -180,15 +180,15 @@ public class TransportQueryActivity extends MyAppCompatActivity {
 
     private List<Map<String, Integer>> addlist() {
         List<Map<String, Integer>> lists = new ArrayList<>();
-        for (int i=0;i<15;i++){
+        for (int i = 0; i < 15; i++) {
             Map<String, Integer> map = new HashMap<>();
-            map.put("serial",1);
-            map.put("busnum",1);
-            map.put("pople",100);
+            map.put("serial", 1);
+            map.put("busnum", 1);
+            map.put("pople", 100);
             lists.add(map);
         }
 
-      return lists;
+        return lists;
 
     }
 }

@@ -3,26 +3,19 @@ package com.example.firsttopic.Fourtopic;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.firsttopic.Menu;
 import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -68,7 +61,7 @@ public class ViolationrecordActivity extends MyAppCompatActivity {
             }
         });
 
-        mrvclermp4.setLayoutManager(new GridLayoutManager(ViolationrecordActivity.this, 4));
+        mrvclermp4.setLayoutManager(new GridLayoutManager(this, 4));
         Mp4Adapter mp4Adapter = new Mp4Adapter(ViolationrecordActivity.this, getTextlist(), getmp4int());
 
         mrvclermp4.setAdapter(mp4Adapter);

@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".transportquery.TransportQueryActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".LightingManagement.LightManagActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".transportquery.TransportQueryActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ninthtop.NinthtopActivity"
             android:screenOrientation="landscape" />
@@ -40,6 +43,9 @@
         <activity android:name=".therrtop.TherrtopActivity" />
         <activity android:name=".twotop.twotopActivity" />
         <activity android:name=".firsttop.firsttopActivity" />
+        <activity android:name=".LongTextActivity">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape">
@@ -48,6 +54,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

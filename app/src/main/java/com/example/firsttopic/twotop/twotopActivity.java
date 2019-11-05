@@ -1,22 +1,18 @@
 package com.example.firsttopic.twotop;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
-import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
@@ -26,7 +22,6 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -127,8 +122,7 @@ public class twotopActivity extends MyAppCompatActivity {
 
                         final String resuit = response.body().string();
                         response.body().close();
-                        Log.d("获取的json的是", resuit + "");
-                        Log.d("进来了解析json", "开始解析");
+
                         GetAppdata datalistjava = gson.fromJson(resuit, GetAppdata.class);
                         Log.d("得到的list是",datalistjava+"");
 
