@@ -1,6 +1,7 @@
 package com.example.firsttopic.Violationenquiry;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -11,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.firsttopic.Menu;
+import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
 import com.example.firsttopic.util.Toastutil;
 import com.google.gson.Gson;
@@ -31,7 +32,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class ViolationEnquiryActivity extends AppCompatActivity {
+public class ViolationEnquiryActivity extends MyAppCompatActivity {
     private String urlone = "http://192.168.3.5:8088/transportservice/action/GetCarPeccancy.do";
     private Button button;
     private EditText editText;
@@ -41,9 +42,12 @@ public class ViolationEnquiryActivity extends AppCompatActivity {
     private Handler handler =new Handler();
     private  String TAG = "ViolationEnquiryActivity";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Menu menu = super.setMenu(this,"违章查询",null);
+        menu.getLinear_left().setBackgroundColor(Color.rgb(255,255,255));
         setContentView(R.layout.activity_violation_enquiry);
         button = findViewById(R.id.btn_caridquery);
         editText = findViewById(R.id.et_carid);

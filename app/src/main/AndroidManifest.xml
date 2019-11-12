@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RoadSituation.Road_SituationActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".leftIndex.LeftIndexActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".RoadSituation.Road_SituationActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Violationenquiry.ViolationDetailsActivity"
             android:screenOrientation="landscape" />
@@ -52,16 +55,16 @@
         <activity android:name=".therrtop.TherrtopActivity" />
         <activity android:name=".twotop.twotopActivity" />
         <activity android:name=".firsttop.firsttopActivity" />
-        <activity android:name=".LongTextActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:screenOrientation="landscape">
+        <activity android:name=".LongTextActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

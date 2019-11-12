@@ -17,13 +17,15 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.firsttopic.GetSetfile.MyDatabaseHelper;
 import com.example.firsttopic.mysqlConnect.Adddata;
 import com.example.firsttopic.mysqlConnect.DBUtils;
 
 import java.util.HashMap;
 
-public class LongTextActivity extends MyAppCompatActivity {
+public class LongTextActivity extends AppCompatActivity {
     private CheckBox checkBox, mPreservation;
     private EditText mPasswordEdit, mUserEdit;
     private String TAG = "开始监听";
@@ -40,7 +42,7 @@ public class LongTextActivity extends MyAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_long_text);
-        super.setMenu(this,"账户管理",null);
+
         pref = getSharedPreferences("data", MODE_PRIVATE);
         baocun = pref.getBoolean("state", true);
         baocun = pref.getBoolean("state", false);

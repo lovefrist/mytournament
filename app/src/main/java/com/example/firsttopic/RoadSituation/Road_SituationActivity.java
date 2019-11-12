@@ -43,6 +43,7 @@ public class Road_SituationActivity extends MyAppCompatActivity {
     private ImageView imgar, imbay, imrotate;
     private ProgressDialog   progressDialog;
     private String urlrot = "http://192.168.3.5:8088/transportservice/action/GetAllSense.do";
+    private boolean  swkai = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +149,7 @@ public class Road_SituationActivity extends MyAppCompatActivity {
 
     private void getdataJson() {
         new Thread(() -> {
-            while (true) {
+            while (swkai) {
                 long startTime = System.currentTimeMillis(); //开始
                 try {
                     Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
@@ -204,6 +205,12 @@ public class Road_SituationActivity extends MyAppCompatActivity {
 
             }
         }).start();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        swkai= false;
     }
 
     private void ChangeColor(int i, int find) {

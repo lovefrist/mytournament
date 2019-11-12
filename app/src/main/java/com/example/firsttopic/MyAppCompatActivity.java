@@ -17,6 +17,7 @@ import com.example.firsttopic.RoadSituation.Road_SituationActivity;
 import com.example.firsttopic.Violationenquiry.ViolationEnquiryActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.fiveTesting.IndexActivity;
+import com.example.firsttopic.leftIndex.LeftIndexActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
 import com.example.firsttopic.seventhtop.SeventhTopActivity;
 import com.example.firsttopic.sixgettop.ChatActivity;
@@ -63,6 +64,7 @@ public class MyAppCompatActivity extends AppCompatActivity {
         idList.add(R.id.T_lempManag);
         idList.add(R.id.T_violationgo);
         idList.add(R.id.T_Roadcondition);
+        idList.add(R.id.T_leftindex);
         ActivityList.add(MainActivity.class);
         ActivityList.add(firsttopActivity.class);
         ActivityList.add(twotopActivity.class);
@@ -77,6 +79,8 @@ public class MyAppCompatActivity extends AppCompatActivity {
         ActivityList.add(LightManagActivity.class);
         ActivityList.add(ViolationEnquiryActivity.class);
         ActivityList.add(Road_SituationActivity.class);
+        ActivityList.add(LeftIndexActivity.class);
+//
 //        ActivityList.add(RedGreenActivity.class);
 //        ActivityList.add(ManagerActivity.class);
     }
