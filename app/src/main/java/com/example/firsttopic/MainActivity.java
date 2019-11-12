@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.firsttopic.EighthTops.EighthTopActivity;
 import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
 import com.example.firsttopic.LightingManagement.LightManagActivity;
+import com.example.firsttopic.RoadSituation.Road_SituationActivity;
+import com.example.firsttopic.Violationenquiry.ViolationEnquiryActivity;
 import com.example.firsttopic.firsttop.firsttopActivity;
 import com.example.firsttopic.fiveTesting.IndexActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
@@ -21,7 +23,7 @@ import com.example.firsttopic.transportquery.TransportQueryActivity;
 import com.example.firsttopic.twotop.twotopActivity;
 
 public class MainActivity extends MyAppCompatActivity {
-    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn,mtan,mlemp;
+    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn,mtan,mlemp,mbtnviolat,mbtnroad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,8 @@ public class MainActivity extends MyAppCompatActivity {
         mAccountbtn = findViewById(R.id.btn_Account);
         mtan = findViewById(R.id.btn_Tran);
         mlemp = findViewById(R.id.btn_lemp);
-
+        mbtnviolat = findViewById(R.id.btn_Violat);
+        mbtnroad = findViewById(R.id.btn_road);
         setonck();
     }
 
@@ -58,6 +61,8 @@ public class MainActivity extends MyAppCompatActivity {
         mAccountbtn.setOnClickListener(onClick);
         mtan.setOnClickListener(onClick);
         mlemp.setOnClickListener(onClick);
+        mbtnviolat.setOnClickListener(onClick);
+        mbtnroad.setOnClickListener(onClick);
     }
 
     class OnClick implements RecyclerView.OnClickListener {
@@ -98,6 +103,12 @@ public class MainActivity extends MyAppCompatActivity {
                     break;
                 case R.id.btn_lemp:
                     intent = new Intent(MainActivity.this, LightManagActivity.class);
+                    break;
+                case R.id.btn_Violat:
+                    intent = new Intent(MainActivity.this, ViolationEnquiryActivity.class);
+                    break;
+                case R.id.btn_road:
+                    intent = new Intent(MainActivity.this, Road_SituationActivity.class);
                     break;
             }
             startActivity(intent);

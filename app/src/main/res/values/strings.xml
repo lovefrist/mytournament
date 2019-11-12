@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">firsttopic</string>
+    <string name="input_et">0123456789QWERTYUPASDFGHJKZXCVBNM</string>
 </resources>

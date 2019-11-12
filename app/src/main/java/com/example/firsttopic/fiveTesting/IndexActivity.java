@@ -112,9 +112,15 @@ public class IndexActivity extends MyAppCompatActivity {
                         handler.post(() -> {
                             parseJSON(resuit, finalI);
                             if (finalI == 1) {
-                                AddsqlData(applist);
-                                indexAdapter = new IndexAdapter(IndexActivity.this, textlist, applist);
-                                recyclerView.setAdapter(indexAdapter);
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        AddsqlData(applist);
+                                        indexAdapter = new IndexAdapter(IndexActivity.this, textlist, applist);
+                                        recyclerView.setAdapter(indexAdapter);
+                                    }
+                                },2000);
+
 
                             }
                         });

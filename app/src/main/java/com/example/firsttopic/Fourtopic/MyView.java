@@ -1,5 +1,4 @@
 package com.example.firsttopic.Fourtopic;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,8 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-
-
 public class MyView extends View {
     private String TAG = "TAG";
     private Bitmap bitmap;
@@ -26,27 +23,20 @@ public class MyView extends View {
     private float s, s1;
     private boolean bool;
     private boolean cent;
-
     public MyView(Context context) {
         super(context);
-
     }
-
     public MyView(Context context, @Nullable AttributeSet attrs) {
-
         super(context, attrs);
         cent = true;
         Log.d(TAG, "MyView: ");
-
     }
-
     public int seturl(int id) {
-        Log.d(TAG, "MyView: " + id);
+        Log.d(TAG, "seturl: " + id);
         bitmap = BitmapFactory.decodeResource(getResources(), id);
         invalidate();
         return id;
     }
-
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         matrix.reset();
@@ -57,18 +47,15 @@ public class MyView extends View {
             Log.e(TAG, "onDraw: "+translationX );
             matrix.postTranslate(translationX, translationY);
             cent = false;
-        } else {
+       } else {
             matrix.postTranslate(translationX, translationY);
         }
-
         Bitmap bitmap1 = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         canvas.drawBitmap(bitmap1, matrix, null);
     }
-
     private float scale(MotionEvent e) {
         return (float) Math.sqrt(Math.pow(e.getX(0) - e.getX(1), 2) + Math.pow(e.getY(0) - e.getY(1), 2));
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getPointerCount() >= 2) {
@@ -131,6 +118,4 @@ public class MyView extends View {
         }
         return true;
     }
-
-
 }

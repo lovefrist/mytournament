@@ -45,7 +45,6 @@ public class IndexAdapter extends RecyclerView.Adapter<IndexAdapter.LinerHoder> 
         });
         if (position == 5){
             holder.titletext.setText(texttitlelist.get(position));
-
             holder.numbertext.setText(applistdet.get(position));
             if (Integer.parseInt(applistdet.get(position))>=4){
 //                holder.relativeLayout.setBackgroundColor(Color.rgb(255,0,0));background
