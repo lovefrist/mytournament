@@ -11,19 +11,25 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firsttopic.EighthTops.EighthTopActivity;
-import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
+import com.example.firsttopic.Feedback.FeedbackActivity;
+import com.example.firsttopic.MultiMedia.ViolationrecordActivity;
 import com.example.firsttopic.LightingManagement.LightManagActivity;
+import com.example.firsttopic.MyTraffic.MyTrafficActivity;
+import com.example.firsttopic.Mycar.MyCarActivity;
 import com.example.firsttopic.RoadSituation.Road_SituationActivity;
+import com.example.firsttopic.Tollinquiry.TollInquiryActivity;
 import com.example.firsttopic.Violationenquiry.ViolationEnquiryActivity;
-import com.example.firsttopic.firsttop.firsttopActivity;
-import com.example.firsttopic.fiveTesting.IndexActivity;
+import com.example.firsttopic.ETC.firsttopActivity;
+import com.example.firsttopic.Environmental.IndexActivity;
+import com.example.firsttopic.highstatus.HighsTatusActivity;
 import com.example.firsttopic.leftIndex.LeftIndexActivity;
+import com.example.firsttopic.newsmedia.NewsMediaActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
 import com.example.firsttopic.seventhtop.SeventhTopActivity;
 import com.example.firsttopic.sixgettop.ChatActivity;
-import com.example.firsttopic.therrtop.TherrtopActivity;
+import com.example.firsttopic.BillManag.TherrtopActivity;
 import com.example.firsttopic.transportquery.TransportQueryActivity;
-import com.example.firsttopic.twotop.twotopActivity;
+import com.example.firsttopic.RedGreenReed.twotopActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +71,12 @@ public class MyAppCompatActivity extends AppCompatActivity {
         idList.add(R.id.T_violationgo);
         idList.add(R.id.T_Roadcondition);
         idList.add(R.id.T_leftindex);
+        idList.add(R.id.T_myopinion);
+        idList.add(R.id.T_highsTat);
+        idList.add(R.id.T_journalism);
+        idList.add(R.id.T_TollInquiry);
+        idList.add(R.id.T_MyCar);
+        idList.add(R.id.T_myTraffoc);
         ActivityList.add(MainActivity.class);
         ActivityList.add(firsttopActivity.class);
         ActivityList.add(twotopActivity.class);
@@ -80,7 +92,12 @@ public class MyAppCompatActivity extends AppCompatActivity {
         ActivityList.add(ViolationEnquiryActivity.class);
         ActivityList.add(Road_SituationActivity.class);
         ActivityList.add(LeftIndexActivity.class);
-//
+        ActivityList.add(FeedbackActivity .class);
+        ActivityList.add(HighsTatusActivity.class);
+        ActivityList.add(NewsMediaActivity.class);
+        ActivityList.add(TollInquiryActivity.class);
+        ActivityList.add(MyCarActivity.class);
+        ActivityList.add(MyTrafficActivity.class);
 //        ActivityList.add(RedGreenActivity.class);
 //        ActivityList.add(ManagerActivity.class);
     }

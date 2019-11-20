@@ -27,7 +27,7 @@ public class Menu extends LinearLayout {//
     private LinearLayout linear_main;//主体布局
     private LinearLayout linear_left;//侧滑菜单主体布局
     private LinearLayout linear_main_menu;//标题栏
-    private TextView menu_title;//标题
+    public TextView menu_title;//标题
     private LinearLayout menu_src_root;//图标根
     private ImageView menu_src;//图标
     private LinearLayout menu_more_root;//标题more父布局

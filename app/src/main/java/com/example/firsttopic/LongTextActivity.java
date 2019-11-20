@@ -1,16 +1,19 @@
 package com.example.firsttopic;
 
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -35,7 +38,7 @@ public class LongTextActivity extends AppCompatActivity {
     private boolean pass_flags;
     private boolean baocun;
     private Handler handler = new Handler();
-    private ProgressDialog progressDialog;
+    private AlertDialog  alertDialog;
 
 
     @Override
@@ -183,17 +186,18 @@ public class LongTextActivity extends AppCompatActivity {
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        progressDialog = new ProgressDialog(LongTextActivity.this);
-                        progressDialog.setMessage("登陆中");
-                        progressDialog.show();
+                        View view = LayoutInflater.from(LongTextActivity.this).inflate(R.layout.partext_layout,null);
+                         alertDialog = new AlertDialog.Builder(LongTextActivity.this).create();
+                        alertDialog.setView(view);
+                        alertDialog.show();
+                        final Window window = alertDialog.getWindow();
+                        window.setBackgroundDrawable(new ColorDrawable(0));
+                        alertDialog.setCanceledOnTouchOutside(false);
                     }
                 });
 
-                Log.d(TAG, "开始连接数据库");
                 String data = mUserEdit.getText() + "";
-                Log.d(TAG, "run: " + data);
                 HashMap<String, Object> map = DBUtils.getInfoByName(data);
-                Log.d(TAG, "连接成功" + map.get("user"));
                 Log.d(TAG, "run: " + map.toString());
                 if (map.size() != 0) {
                     if (map.get("user").equals(mUserEdit.getText() + "") && map.get("password").equals(mPasswordEdit.getText() + "")) {
@@ -210,7 +214,7 @@ public class LongTextActivity extends AppCompatActivity {
                         if (pass_flags) {
 
                             Intent intent = new Intent(LongTextActivity.this, MainActivity.class);
-                            progressDialog.cancel();
+                            alertDialog.cancel();
                             startActivity(intent);
                             finish();
                         } else {
@@ -219,7 +223,7 @@ public class LongTextActivity extends AppCompatActivity {
                             toast.setText("账号或者密码错误");
                             toast.setGravity(0, 20, 20);
                             toast.show();
-                            progressDialog.cancel();
+                            alertDialog.cancel();
                         }
                     }
                 });

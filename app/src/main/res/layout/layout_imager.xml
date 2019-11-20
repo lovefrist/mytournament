@@ -8,13 +8,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <com.example.firsttopic.Fourtopic.MyView
+        <com.example.firsttopic.MultiMedia.MyView
             android:id="@+id/myv_img1"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             />
-        <com.example.firsttopic.Fourtopic.MyView
+        <com.example.firsttopic.MultiMedia.MyView
             android:id="@+id/myv_img2"
             android:layout_width="0dp"
             android:layout_height="100dp"
@@ -26,13 +26,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-        <com.example.firsttopic.Fourtopic.MyView
+        <com.example.firsttopic.MultiMedia.MyView
             android:id="@+id/myv_img3"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             />
-        <com.example.firsttopic.Fourtopic.MyView
+        <com.example.firsttopic.MultiMedia.MyView
             android:id="@+id/myv_img4"
             android:layout_width="0dp"
             android:layout_height="100dp"

@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.firsttopic.Menu;
 import com.example.firsttopic.MyAppCompatActivity;
 import com.example.firsttopic.R;
-import com.example.firsttopic.twotop.GetAppdata;
+import com.example.firsttopic.RedGreenReed.GetAppdata;
 import com.example.firsttopic.util.Toastutil;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

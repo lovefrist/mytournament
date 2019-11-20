@@ -1,6 +1,7 @@
 package com.example.firsttopic.util;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.widget.Toast;
 
 public class Toastutil {
@@ -11,6 +12,7 @@ public class Toastutil {
         }else {
             mtoast.setText(msg);
         }
+        mtoast.setGravity(Gravity.CENTER,0,0);
         mtoast.show();
     }
 }

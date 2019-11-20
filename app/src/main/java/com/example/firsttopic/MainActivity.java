@@ -9,21 +9,29 @@ import android.widget.Button;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firsttopic.EighthTops.EighthTopActivity;
-import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
+import com.example.firsttopic.Feedback.FeedbackActivity;
+import com.example.firsttopic.MultiMedia.ViolationrecordActivity;
 import com.example.firsttopic.LightingManagement.LightManagActivity;
+import com.example.firsttopic.MyTraffic.MyTrafficActivity;
+import com.example.firsttopic.Mycar.MyCarActivity;
 import com.example.firsttopic.RoadSituation.Road_SituationActivity;
+import com.example.firsttopic.Tollinquiry.TollInquiryActivity;
 import com.example.firsttopic.Violationenquiry.ViolationEnquiryActivity;
-import com.example.firsttopic.firsttop.firsttopActivity;
-import com.example.firsttopic.fiveTesting.IndexActivity;
+import com.example.firsttopic.ETC.firsttopActivity;
+import com.example.firsttopic.Environmental.IndexActivity;
+import com.example.firsttopic.highstatus.HighsTatusActivity;
+import com.example.firsttopic.leftIndex.LeftIndexActivity;
+import com.example.firsttopic.newsmedia.NewsMediaActivity;
 import com.example.firsttopic.ninthtop.NinthtopActivity;
 import com.example.firsttopic.seventhtop.SeventhTopActivity;
 import com.example.firsttopic.sixgettop.ChatActivity;
-import com.example.firsttopic.therrtop.TherrtopActivity;
+import com.example.firsttopic.BillManag.TherrtopActivity;
 import com.example.firsttopic.transportquery.TransportQueryActivity;
-import com.example.firsttopic.twotop.twotopActivity;
+import com.example.firsttopic.RedGreenReed.twotopActivity;
 
 public class MainActivity extends MyAppCompatActivity {
-    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn,mtan,mlemp,mbtnviolat,mbtnroad;
+    private Button mfbutton, mtwobtn, mtherrbtn, mforbtn,mTasting,mChart,msevebtn,mgpbaibtn,mAccountbtn,mtan,mlemp,mbtnviolat,mbtnroad,btnleftindex,btnFeedback,
+            btnhigtnow,btnjournalism,btntollInquiry,btnmycar,btnmytraffic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,13 @@ public class MainActivity extends MyAppCompatActivity {
         mlemp = findViewById(R.id.btn_lemp);
         mbtnviolat = findViewById(R.id.btn_Violat);
         mbtnroad = findViewById(R.id.btn_road);
+        btnleftindex = findViewById(R.id.btn_leftindex);
+        btnFeedback = findViewById(R.id.btn_Feedback);
+        btnhigtnow = findViewById(R.id.btn_higtnow);
+        btnjournalism = findViewById(R.id.btn_journalism);
+        btntollInquiry = findViewById(R.id.btn_tollInquiry);
+        btnmycar = findViewById(R.id.btn_mycar);
+        btnmytraffic = findViewById(R.id.btn_mytraffic);
         setonck();
     }
 
@@ -63,6 +78,13 @@ public class MainActivity extends MyAppCompatActivity {
         mlemp.setOnClickListener(onClick);
         mbtnviolat.setOnClickListener(onClick);
         mbtnroad.setOnClickListener(onClick);
+        btnleftindex.setOnClickListener(onClick);
+        btnFeedback.setOnClickListener(onClick);
+        btnhigtnow.setOnClickListener(onClick);
+        btnjournalism.setOnClickListener(onClick);
+        btntollInquiry.setOnClickListener(onClick);
+        btnmycar.setOnClickListener(onClick);
+        btnmytraffic.setOnClickListener(onClick);
     }
 
     class OnClick implements RecyclerView.OnClickListener {
@@ -109,6 +131,27 @@ public class MainActivity extends MyAppCompatActivity {
                     break;
                 case R.id.btn_road:
                     intent = new Intent(MainActivity.this, Road_SituationActivity.class);
+                    break;
+                case R.id.btn_leftindex:
+                    intent = new Intent(MainActivity.this, LeftIndexActivity.class);
+                    break;
+                case R.id.btn_Feedback:
+                    intent = new Intent(MainActivity.this, FeedbackActivity.class);
+                    break;
+                case R.id.btn_higtnow:
+                    intent = new Intent(MainActivity.this, HighsTatusActivity.class);
+                    break;
+                case R.id.btn_journalism:
+                    intent = new Intent(MainActivity.this, NewsMediaActivity.class);
+                    break;
+                case R.id.btn_tollInquiry:
+                    intent = new Intent(MainActivity.this, TollInquiryActivity.class);
+                    break;
+                case R.id.btn_mycar:
+                    intent = new Intent(MainActivity.this, MyCarActivity.class);
+                    break;
+                case R.id.btn_mytraffic:
+                    intent = new Intent(MainActivity.this, MyTrafficActivity.class);
                     break;
             }
             startActivity(intent);

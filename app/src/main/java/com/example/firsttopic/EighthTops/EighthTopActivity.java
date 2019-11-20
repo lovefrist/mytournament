@@ -74,7 +74,9 @@ public class EighthTopActivity extends MyAppCompatActivity {
         daynum = Integer.parseInt(sdf2.format(date));
         textView.setText(dateNowStr);
         settime();
-        textView.setOnClickListener(v -> showDatePickerDialog(EighthTopActivity.this, 4, textView, calendar));
+        textView.setOnClickListener((View v) -> {
+            showDatePickerDialog(EighthTopActivity.this, 4, textView, calendar);
+        });
         charcorl();
     }
 

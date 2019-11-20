@@ -12,7 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".leftIndex.LeftIndexActivity" android:screenOrientation="landscape"></activity>
+        <activity android:name=".MyTraffic.MyTrafficActivity" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".Mycar.MyCarActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Tollinquiry.TollInquiryActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".newsmedia.NewsMediaActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".highstatus.HighsTatusActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Feedback.MyUploadActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Feedback.FeedbackActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".leftIndex.LeftIndexActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".RoadSituation.Road_SituationActivity"
             android:screenOrientation="landscape" />
@@ -41,20 +62,20 @@
             android:name=".sixgettop.ChatActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".fiveTesting.IndexActivity"
+            android:name=".Environmental.IndexActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Fourtopic.Mp4oneActivity"
+            android:name=".MultiMedia.Mp4oneActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Fourtopic.ViolationrecordActivity"
+            android:name=".MultiMedia.ViolationrecordActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Fourtopic.JpgreadActivity"
+            android:name=".MultiMedia.JpgreadActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".therrtop.TherrtopActivity" />
-        <activity android:name=".twotop.twotopActivity" />
-        <activity android:name=".firsttop.firsttopActivity" />
+        <activity android:name=".BillManag.TherrtopActivity" />
+        <activity android:name=".RedGreenReed.twotopActivity" />
+        <activity android:name=".ETC.firsttopActivity" />
         <activity android:name=".LongTextActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -64,7 +85,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

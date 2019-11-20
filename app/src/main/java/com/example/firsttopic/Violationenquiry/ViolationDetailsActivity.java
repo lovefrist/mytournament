@@ -20,7 +20,7 @@ import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.firsttopic.Fourtopic.ViolationrecordActivity;
+import com.example.firsttopic.MultiMedia.ViolationrecordActivity;
 import com.example.firsttopic.GetSetfile.MyDataViolatirHelper;
 import com.example.firsttopic.Menu;
 import com.example.firsttopic.MyAppCompatActivity;
@@ -55,11 +55,12 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
     private List<Map> list1 = new ArrayList<>();
     private List<Map> list2 = new ArrayList<>();
     private List<Map<String, String>> listnum = new ArrayList<>();
-    private List<Map<String, String>> listnumright = new ArrayList<>();
+    private List<Map<String, String>> listnumleft = new ArrayList<>();
     private Handler handler = new Handler();
     private ViodetailsAdapter adapter;
     private ViolationcardAdapter violationcardAdapter;
     private MyDataViolatirHelper dbhoder;
+    private List<View> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,30 +73,66 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
         dbhoder = new MyDataViolatirHelper(this, "Violationhistory", null, 2);
         recyclerViewlift = findViewById(R.id.rv_datalis);
         recyclerViewlift.setLayoutManager(new LinearLayoutManager(this));
-        violationcardAdapter = new ViolationcardAdapter(this, listnumright, new Vioinf() {
+        violationcardAdapter = new ViolationcardAdapter(this, listnumleft, new Vioinf() {
 
             @Override
-            public void getImageonClick(String string) {
+            public void getImageonClick(String string,int porast) {
                 SQLiteDatabase database = dbhoder.getWritableDatabase();
+                Log.d(TAG, "getImageonClick: 删除的车牌号"+string);
                 database.delete("Violation", "carnumber = ?", new String[]{string});
-                Log.d(TAG, "getImageonClick: 删除成功");
-                list1.clear();
-                list2.clear();
-                listnumright.clear();
-                listnum.clear();
-                qurySQL(null, false);
-                violationcardAdapter.notifyDataSetChanged();
-                getdataJson();
+                listnumleft.clear();
+              Cursor cursor =  database.query("Violation",null,null,null,null,null,null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        Map<String, String> map1 = new HashMap();
+                        String carnumber = cursor.getString(cursor.getColumnIndex("carnumber"));
+                        String pmoney = cursor.getString(cursor.getColumnIndex("pmoney"));
+                        String pscore = cursor.getString(cursor.getColumnIndex("pscore"));
+                        String number = cursor.getString(cursor.getColumnIndex("number"));
+                        map1.put("carnumber", carnumber);
+                        map1.put("pmoney", pmoney);
+                        map1.put("pscore", pscore);
+                        map1.put("number", number);
+                        listnumleft.add(map1);
+
+                    } while (cursor.moveToNext());
+
+                }else {
+                    listnum.clear();
+                    adapter.notifyDataSetChanged();
+                }
+                if (listnumleft.size() != 0) {
+                    setringleft(listnumleft.get(0).get("carnumber"));
+                }
+
+                for (int i = 0;i<list.size();i++){
+                    if (i == porast){
+                        list.remove(i);
+                    }
+                }
+                list.clear();
+                recyclerViewlift.setAdapter(violationcardAdapter);
             }
 
             @Override
-            public void getLayoutonClick(String carnum) {
+            public void getLayoutonClick(String carnum,int poast) {
                 listnum.clear();
-                listnumright.clear();
                 list1.clear();
                 list2.clear();
-                carid = carnum;
-                getdataJson();
+                setringleft(carnum);
+                for (int i = 0;i<list.size();i++){
+                    if (i == poast){
+                        list.get(i).setBackgroundResource(R.drawable.violat_chane_adapter);
+                    }else {
+                        list.get(i).setBackgroundResource(R.drawable.violat_recycler_adapter);
+                    }
+                }
+
+            }
+
+            @Override
+            public void getLayoutonView(View view) {
+                list.add(view);
             }
         });
         recyclerViewlift.setAdapter(violationcardAdapter);
@@ -130,7 +167,6 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                     }
                     Map map = new HashMap<>();
                     if (url != urlone) {
-//                            {"UserName":"user1","carnumber":"鲁B10001"}
                         map.put("UserName", "user1");
                     } else {
                         map.put("UserName", "user1");
@@ -189,8 +225,6 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                                     map1.put("pdatetime", list2.get(j).get("pdatetime"));
                                     map1.put("premarks", list1.get(k).get("premarks"));
                                     listnum.add(map1);
-
-
                                 }
                             }
                         }
@@ -203,17 +237,17 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                             numpmoney += Integer.parseInt(listnum.get(j).get("pmoney"));
                             numpscore += Integer.parseInt(listnum.get(j).get("pscore"));
                         }
-
                         map1.put("pscore", numpscore + "");
                         map1.put("pmoney", numpmoney + "");
                         List<Map<String, String>> mapList = new ArrayList<>();
                         mapList.add(map1);
-                        listnumright.add(map1);
-                        qurySQL(mapList, true);
+                        listnumleft.add(map1);
+                        qurySQL(mapList);
                         addSQLdata(mapList);
                         handler.post(() -> {
                             adapter.notifyDataSetChanged();
-                            violationcardAdapter.notifyDataSetChanged();
+                            list.clear();
+                            recyclerViewlift.setAdapter(violationcardAdapter);
                         });
 
                     }
@@ -229,8 +263,101 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
 
     }
 
+   private void setringleft(String namecar){
+       new Thread(() -> {
+           try {
+               Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
+               MediaType mediaType = MediaType.parse("application/json");
+               String url;
+               for (int i = 0; i < 2; i++) {
+                   if (i != 0) {
+                       url = urlone;
+                   } else {
+                       url = urlCode;
+                   }
+                   Map map = new HashMap<>();
+                   if (url != urlone) {
+                       map.put("UserName", "user1");
+                   } else {
+                       map.put("UserName", "user1");
+                       map.put("carnumber", namecar);
+                   }
+
+                   String params = gson.toJson(map);
+                   Log.d(TAG, "run: url" + url);
+                   Log.d(TAG, "run:JSOn " + params);
+                   RequestBody requestBody = RequestBody.create(mediaType, params);
+                   Request request = new Request.Builder().post(requestBody).url(url).build();
+                   okHttpClient = new OkHttpClient();
+                   Response response = null;
+                   response = okHttpClient.newCall(request).execute();
+                   final String resuit = response.body().string();
+
+                   JSONObject jsonObject = new JSONObject(resuit);
+                   JSONArray jsonArray = jsonObject.getJSONArray("ROWS_DETAIL");
+                   if (url != urlone) {
+                       for (int j = 0; j < jsonArray.length(); j++) {
+                           Map map1 = new HashMap();
+                           JSONObject arrayObject1 = jsonArray.getJSONObject(j);
+                           String pcode = arrayObject1.getString("pcode");
+                           String premarks = arrayObject1.getString("premarks");
+                           String pmoney = arrayObject1.getString("pmoney");
+                           String pscore = arrayObject1.getString("pscore");
+                           map1.put("pcode", pcode);
+                           map1.put("premarks", premarks);
+                           map1.put("pmoney", pmoney);
+                           map1.put("pscore", pscore);
+                           list1.add(map1);
+                       }
+                   } else {
+                       for (int j = 0; j < jsonArray.length(); j++) {
+                           JSONObject arrayObject1 = jsonArray.getJSONObject(j);
+                           Map map1 = new HashMap();
+                           String pcode = arrayObject1.getString("pcode");
+                           String pdatetime = arrayObject1.getString("pdatetime");
+                           String paddr = arrayObject1.getString("paddr");
+                           map1.put("pcode", pcode);
+                           map1.put("pdatetime", pdatetime);
+                           map1.put("paddr", paddr);
+                           list2.add(map1);
+                       }
+                   }
+                   if (i == 1) {
+                       for (int j = 0; j < list2.size(); j++) {
+
+                           for (int k = 0; k < list1.size(); k++) {
+                               if (list1.get(k).get("pcode").equals(list2.get(j).get("pcode"))) {
+
+                                   Map map1 = new HashMap();
+                                   map1.put("pmoney", list1.get(k).get("pmoney"));
+                                   map1.put("pscore", list1.get(k).get("pscore"));
+                                   map1.put("paddr", list2.get(j).get("paddr"));
+                                   map1.put("pdatetime", list2.get(j).get("pdatetime"));
+                                   map1.put("premarks", list1.get(k).get("premarks"));
+                                   listnum.add(map1);
+                               }
+                           }
+                       }
+
+                       handler.post(() -> {
+                           adapter.notifyDataSetChanged();
+
+                       });
+
+                   }
+
+               }
+
+           } catch (IOException e) {
+               e.printStackTrace();
+           } catch (JSONException e) {
+               e.printStackTrace();
+           }
+       }).start();
+
+   }
     private void addSQLdata(List<Map<String, String>> list) {
-        Log.d(TAG, "addSQLdata: list的大小" + list.size());
+
         boolean bol = true;
         SQLiteDatabase database = dbhoder.getWritableDatabase();
         Cursor cursor = database.query("Violation", null, null, null, null, null, null);
@@ -240,7 +367,6 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                 if (!bol) {
                     break;
                 }
-                Log.d(TAG, "addSQLdata: 是不是有相同的" + bol);
             } while (cursor.moveToNext());
         }
         if (bol) {
@@ -251,12 +377,11 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
             values.put("number", list.get(0).get("number"));
             database.insert("Violation", null, values);
             Log.d(TAG, "addSQLdata: 添加成功");
-
         }
 
     }
 
-    private void qurySQL(List<Map<String, String>> mapList, boolean bol) {
+    private void qurySQL(List<Map<String, String>> mapList) {
 
         SQLiteDatabase database = dbhoder.getWritableDatabase();
         Cursor cursor = database.query("Violation", null, null, null, null, null, null);
@@ -273,32 +398,11 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                 map1.put("pmoney", pmoney);
                 map1.put("pscore", pscore);
                 map1.put("number", number);
-                if (bol) {
                     if (!mapList.get(0).get("carnumber").equals(carnumber)) {
-                        carid = carnumber;
-                        listnumright.add(map1);
-                    }
-                    if (cursor.moveToNext()) {
-
-                    } else {
-                        break;
-                    }
-                } else {
-
-                    if (cursor.moveToNext()) {
-                        listnumright.add(map1);
-                    } else {
-                        break;
+                        listnumleft.add(map1);
                     }
 
-                }
-            } while (true);
-        } else {
-            if (bol) {
-            } else {
-                adapter.notifyDataSetChanged();
-                carid = "";
-            }
+            } while (cursor.moveToNext());
         }
         cursor.close();
     }
@@ -331,13 +435,14 @@ public class ViolationDetailsActivity extends MyAppCompatActivity {
                 if (len >= 1 && s1.startsWith("0")) ;
             }
         });
+
         AlertDialog inputDialog = new AlertDialog.Builder(this).setView(view).create();
         inputDialog.show();
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listnum.clear();
-                listnumright.clear();
+                listnumleft.clear();
                 list1.clear();
                 list2.clear();
                 carid = "鲁" + editText.getText().toString();

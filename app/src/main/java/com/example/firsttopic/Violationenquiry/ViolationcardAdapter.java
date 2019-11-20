@@ -34,24 +34,21 @@ public class ViolationcardAdapter extends RecyclerView.Adapter<ViolationcardAdap
 
     @Override
     public void onBindViewHolder(@NonNull MyViolatHoder holder, int position) {
-        if (position ==0){
-            holder.lacard.setBackgroundResource(R.drawable.violat_chane_adapter);
-        }
         holder.tvcaridadap.setText(list.get(position).get("carnumber"));
         holder.tvfrequency.setText(list.get(position).get("number"));
         holder.tvviobranch.setText(list.get(position).get("pscore"));
         holder.tvviomeny.setText(list.get(position).get("pmoney"));
-
+        vioinf.getLayoutonView(holder.lacard);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vioinf.getImageonClick(list.get(position).get("carnumber"));
+                vioinf.getImageonClick(list.get(position).get("carnumber"),position);
             }
         });
         holder.lacard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vioinf.getLayoutonClick(list.get(position).get("carnumber"));
+                vioinf.getLayoutonClick(list.get(position).get("carnumber"),position);
 
             }
         });
